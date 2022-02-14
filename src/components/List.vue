@@ -78,6 +78,7 @@ const clickList = () => {
 </script>
 <style lang='sass' scoped>
 .listItem
+  background-color: #ffffff
   display: flex
   align-content: stretch
   padding: 15px 10px 15px 15px
@@ -105,7 +106,9 @@ const clickList = () => {
       height: 20px
       opacity: 0.2
 .itemTouch
-  background-color: #f4f4f4
+  background-color: #f9f9f9
+.listItem:active
+  background-color: #f9f9f9
 .listBorder
   height: 0px
   border-top: 1px solid #dddddd

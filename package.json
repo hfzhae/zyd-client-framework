@@ -1,6 +1,6 @@
 {
   "name": "zyd-client-framework",
-  "version": "1.0.14",
+  "version": "1.0.16",
   "description": "基于vite的client端的组件框架",
   "main": "./src/main.ts",
   "dependencies": {

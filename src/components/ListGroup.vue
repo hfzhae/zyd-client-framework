@@ -22,7 +22,7 @@ const props = defineProps({
   margin: 20px
   padding: 0 0 0 0
   border-radius: 10px
-  ::v-deep .listBorder:last-child
+  :v-deep(.listBorder:last-child)
     display: none
 .listGroupTitle
   margin: 20px 0 -15px 25px
