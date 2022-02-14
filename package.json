@@ -1,0 +1,27 @@
+{
+  "name": "zyd-client-framework",
+  "version": "1.0.0",
+  "description": "基于vite的client端的组件框架",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0",
+    "vue-tsc": "^0.29.8"
+  },
+  "keywords": [
+    "vue",
+    "vite",
+    "element"
+  ],
+  "author": "zhangzheng",
+  "license": "MIT",
+  "homepage": "https://github.com/hfzhae/zyd-client-framework"
+}
