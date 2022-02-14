@@ -45,3 +45,23 @@ import { List, ListGroup } from 'zyd-client-framework'
 ```html
 <ListGroup title="title"></ListGroup>
 ```
+
+## LeftSlider
+```html
+<ListGroup>
+  <LeftSlider v-for="item in 10" :key="item">
+    <List desc="desc" foot="foot" isLink :fun="()=>{}" :icon="IceCreamRound">
+      <template #title>title{{item}}</template>
+    </List>
+    <template #rightMenu>
+      <div style="margin: 0 20px">del</div>
+    </template>
+  </LeftSlider>
+</ListGroup>
+```
+#### slot
+```html
+<template #rightMenu>
+  <div style="margin: 0 20px">del</div>
+</template>
+```
