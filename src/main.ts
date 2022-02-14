@@ -1,4 +1,2 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
+export { default as List } from './components/List.vue'
+export { default as ListGroup } from './components/ListGroup.vue'

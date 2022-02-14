@@ -1,46 +1,43 @@
 <template>
   <div
-    v-loading="disabled"
-    class="listItem listItemActive"
     ref="listItem"
+    class="listItem"
     @touchstart="touchstart()"
     @touchend="touchend()"
     @click="clickList"
   >
-    <div class="head" v-if="icon || slotIcon">
+    <div class="listHead">
       <component v-if="icon && !slotIcon" :is="icon" />
       <slot name="icon" />
     </div>
-    <div class="body">
-      <div v-if="title || slotTitle" class="listTitle">
-        <span v-if="title && !slotTitle">{{title}}</span>
+    <div class="listBody">
+      <div class="listTitle" v-if="title || slotTitle">
+        <div v-if="title && !slotTitle">{{title}}</div>
         <slot name="title" />
       </div>
-      <div v-if="desc || slotDesc" class="listDesc">
-        <span v-if="desc && !slotDesc">{{desc}}</span>
+      <div class="listDesc" v-if="desc || slotDesc">
+        <div v-if="desc && !slotDesc">{{desc}}</div>
         <slot name="desc" />
       </div>
     </div>
-    <div class="foot">
+    <div class="listFoot">
       <div v-if="foot || slotFoot" class="footText">
         <span v-if="foot && !slotFoot">{{foot}}</span>
         <slot name="foot" />
       </div>
-      <el-icon class="arrowright" v-if="isLink">
-        <arrow-right />
-      </el-icon>
+      <component class="footArrow" :is="ArrowRight" />
     </div>
   </div>
   <div v-if="showBorder" :class="`listBorder ${icon || slotIcon?'':'listBorderNoIcon'}`"></div>
 </template>
 <script lang='ts' setup>
-import { getCurrentInstance, watch, useSlots, onMounted } from 'vue'
+import { ref, useSlots } from 'vue'
 import { ArrowRight } from '@element-plus/icons-vue'
-const slotIcon = !!useSlots().icon
 const slotTitle = !!useSlots().title
 const slotDesc = !!useSlots().desc
 const slotFoot = !!useSlots().foot
-const { proxy } = getCurrentInstance()
+const slotIcon = !!useSlots().icon
+const listItem = ref(null)
 const props = defineProps({
   title: {
     type: String,
@@ -56,79 +53,64 @@ const props = defineProps({
   },
   isLink: {
     type: Boolean,
-    default: false
+    default: true
   },
   icon: {
     type: Object
-  },
-  fun: {
-    type: Function
   },
   showBorder: {
     type: Boolean,
     default: true
   },
-  disabled: {
-    type: Boolean,
-    default: false
+  fun: {
+    type: Function
   }
 })
 const touchstart = () => {
-  ;(props.isLink || props.fun) &&
-    proxy.$refs.listItem.classList.add('itemTouch')
+  ;(props.isLink || props.fun) && listItem.value.classList.add('itemTouch')
 }
 const touchend = () => {
-  proxy.$refs.listItem.classList.remove('itemTouch')
+  listItem.value.classList.remove('itemTouch')
 }
 const clickList = () => {
   props.fun && !props.disabled && props.fun()
 }
-onMounted(() => {
-  !props.isLink &&
-    !props.fun &&
-    proxy.$refs.listItem.classList.remove('listItemActive')
-})
 </script>
 <style lang='sass' scoped>
-@import '../styles/element/index.scss'
 .listItem
-  padding: 15px
   display: flex
-  background-color: $--color-white
+  align-content: stretch
+  padding: 15px 10px 15px 15px
+  .listHead
+    padding: 2px 10px 0 0
+    .icon
+      opacity: 0.5
+      width: 20px!important
+      height: 20px!important
+  .listBody
+    flex: 1
+    .listTitle
+      font-size: 18px
+    .listDesc
+      font-size: 14px
+      opacity: 0.5
+  .listFoot
+    display: flex
+    align-items: center
+    .footText
+      font-size: 14px
+      opacity: 0.5
+    .footArrow
+      width: 20px
+      height: 20px
+      opacity: 0.2
+.itemTouch
+  background-color: #f4f4f4
 .listBorder
   height: 0px
-  border-top: 1px solid var(--el-border-color-base)
+  border-top: 1px solid #dddddd
   transform: scaleY(.5)
   margin-left: 45px
 .listBorderNoIcon
   margin-left: 15px
-.itemTouch
-  background-color: $--color-info-light-9
-.listItemActive:active
-  background-color: $--color-info-light-9
-.head
-  padding: 2px 10px 0 0
-  color: $--color-primary
-  .icon
-    width: 20px!important
-    height: 20px!important
-.body
-  flex: 1
-  padding: 0px 5px 0 0
-.foot
-  display: flex
-  align-items: center
-  .footText
-    color: $--color-info-light-5
-    font-size: 14px
-    margin: 0 5px
-  .arrowright
-    color: var(--el-border-color-base)
-    font-size: 20px
-.listTitle
-  font-size: 18px
-  color: $--color-black
-.listDesc
-  font-size: 14px
-  color: $--color-info-light-3
 </style>
