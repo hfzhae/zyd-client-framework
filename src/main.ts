@@ -1,3 +1,5 @@
 export { default as List } from './components/List.vue'
 export { default as ListGroup } from './components/ListGroup.vue'
 export { default as LeftSlider } from './components/LeftSlider.vue'
+export { default as Block } from './components/Block.vue'
+export { default as BlockGroup } from './components/BlockGroup.vue'

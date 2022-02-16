@@ -5,13 +5,16 @@
       @touchmove="touchMove"
       @touchend="touchend"
       :style="deleteSlider"
-      style="width:100%;"
-      class="content"
+      :class="`content ${itemClass?itemClass:'contentBackgroundColor'}`"
     >
       <slot />
       <div v-if="showBorder" class="listBorder"></div>
     </div>
-    <div ref="rightMenu" :style="menuStyle?menuStyle:''" class="rightMenu" v-if="slotRightMenu">
+    <div
+      ref="rightMenu"
+      :class="`rightMenu ${menuClass?menuClass:'rightMenuBackgroundColor'}`"
+      v-if="slotRightMenu"
+    >
       <slot name="rightMenu" />
     </div>
   </div>
@@ -19,13 +22,15 @@
 <script lang='ts' setup>
 import { ref, shallowRef, useSlots } from 'vue'
 const props = defineProps({
-  menuStyle: {
-    type: String,
-    default: ''
+  menuClass: {
+    type: String
   },
   showBorder: {
     type: Boolean,
     default: true
+  },
+  itemClass: {
+    type: String
   }
 })
 const slotRightMenu = !!useSlots().rightMenu
@@ -94,16 +99,19 @@ const touchend = ev => {
   .content
     z-index: 100
     transition: 0.1s
+    width: 100%
+  .rightMenuBackgroundColor
+    background: #df5327
   .rightMenu
     position: absolute
     top: 0
     right: 0
     height: 99%
-    background: #cccccc
     color: #fff
     text-align: center
     display: flex
     align-items: center
     justify-content: center
-
+  .contentBackgroundColor
+    background-color: #ffffff
 </style>

@@ -1,6 +1,10 @@
 <template>
   <div class="listGroupTitle" v-if="title">{{title}}</div>
-  <div class="listGroupItem" :style="groupStyle?groupStyle:''">
+  <div
+    :class="`listGroupItem ${itemClass?itemClass:'listGroupItemBackgroundColor'}`"
+    :style="groupStyle?groupStyle:''"
+  >
+    <div v-if="disabled" class="maks"></div>
     <slot />
   </div>
 </template>
@@ -12,18 +16,34 @@ const props = defineProps({
   },
   groupStyle: {
     type: String
+  },
+  itemClass: {
+    type: String
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
 <style lang='sass' scoped>
-.listGroupItem
-  overflow: hidden
+.listGroupItemBackgroundColor
   background-color: #ffffff
+.listGroupItem
+  position: relative
+  overflow: hidden
   margin: 20px
   padding: 0 0 0 0
   border-radius: 10px
-  :v-deep(.listBorder:last-child)
+  :deep(.listBorder:last-child)
     display: none
+  .maks
+    position: absolute
+    width: 100%
+    background-color: #999999
+    padding-bottom: 100%
+    opacity: 0.5
+    z-index: 1
 .listGroupTitle
   margin: 20px 0 -15px 25px
   font-size: 18px
