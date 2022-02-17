@@ -1,7 +1,7 @@
 # [zyd-client-framework](https://github.com/hfzhae/zyd-client-framework)
 <p>
   <a href="https://github.com/hfzhae/zyd-client-framework/blob/master/LICENSE"><img style="margin-right:5px;" src="https://img.shields.io/badge/license-MIT-grren.svg"></a>
-  <img style="margin-right:5px;" src="https://img.shields.io/badge/vue-v3-blue.svg">
+  <img style="margin-right:5px;" src="https://img.shields.io/badge/vue-3.x-blue.svg">
   <img style="margin-right:5px;" src="https://img.shields.io/badge/element-plus-orange.svg">
 </p>
 
@@ -11,7 +11,6 @@ $ npm install -s zyd-client-framework
 ```
 
 ## Import
->/index.js
 ```js
 import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-framework'
 ```
