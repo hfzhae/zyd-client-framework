@@ -35,6 +35,7 @@ const props = defineProps({
   transition: {
     type: Number,
     default: 0.3
+  }
 })
 const slotRightMenu = !!useSlots().rightMenu
 const startX = shallowRef(0)
