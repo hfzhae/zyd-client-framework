@@ -29,5 +29,5 @@ const props = defineProps({
 .blockGroupTitle
   margin: 20px 0 -0px 25px
   font-size: 18px
-  color: #cccccc
+  color: #000000
 </style>

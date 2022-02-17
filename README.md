@@ -164,7 +164,7 @@ name|explain|type|default|examples
 itemClass|List元素css类名|String||itemClass="itemClass"
 menuClass|右侧按钮菜单css类名|String||menuClass="menuClass"
 showBorder|是否显示行间边框|Boolean|true|:showBorder="false"
-transition|滑块动画时常|Number|0.3|:transition="0.1"
+transition|滑块动画时长|Number|0.3|:transition="0.1"
 
 ```html
 <ListGroup>
