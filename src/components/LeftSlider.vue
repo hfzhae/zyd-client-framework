@@ -4,7 +4,7 @@
       @touchstart="touchstart"
       @touchmove="touchMove"
       @touchend="touchend"
-      :style="deleteSlider"
+      :style="`transition:${transition}s;` + deleteSlider"
       :class="`content ${itemClass?itemClass:'contentBackgroundColor'}`"
     >
       <slot />
@@ -31,7 +31,10 @@ const props = defineProps({
   },
   itemClass: {
     type: String
-  }
+  },
+  transition: {
+    type: Number,
+    default: 0.3
 })
 const slotRightMenu = !!useSlots().rightMenu
 const startX = shallowRef(0)
@@ -98,7 +101,6 @@ const touchend = ev => {
   user-select: none
   .content
     z-index: 100
-    transition: 0.3s
     width: 100%
   .rightMenuBackgroundColor
     background: #df5327

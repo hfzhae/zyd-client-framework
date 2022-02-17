@@ -100,7 +100,14 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
 ## LeftSlider
 ```html
 <ListGroup>
-  <LeftSlider v-for="item in 10" :key="item">
+  <LeftSlider 
+    v-for="item in 10"
+    :key="item"
+    :showBorder="true"
+    :transition="0.3"
+    itemClass="itemClass"
+    menuClass="menuClass"
+  >
     <List desc="desc" foot="foot" isLink :fun="()=>{}" :icon="IceCreamRound">
       <template #title>title{{item}}</template>
     </List>
