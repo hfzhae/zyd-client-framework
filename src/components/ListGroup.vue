@@ -4,7 +4,7 @@
     :class="`listGroupItem ${itemClass?itemClass:'listGroupItemBackgroundColor'}`"
     :style="groupStyle?groupStyle:''"
   >
-    <div v-if="disabled" class="maks"></div>
+    <div v-if="disabled" :class="`mask ${maskClass?maskClass:'maskBackgroundColor'}`"></div>
     <slot />
   </div>
 </template>
@@ -23,6 +23,9 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
+  },
+  maskClass: {
+    type: String
   }
 })
 </script>
@@ -37,13 +40,15 @@ const props = defineProps({
   border-radius: 10px
   :deep(.listBorder:last-child)
     display: none
-  .maks
+  .mask
     position: absolute
     width: 100%
-    background-color: #999999
     padding-bottom: 100%
-    opacity: 0.5
+    opacity: 0.8
     z-index: 1
+    margin: -20px 0 0 0
+  .maskBackgroundColor
+    background-color: #ffffff
 .listGroupTitle
   margin: 20px 0 -15px 25px
   font-size: 18px

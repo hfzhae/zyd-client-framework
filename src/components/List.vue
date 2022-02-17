@@ -6,7 +6,11 @@
     @touchend="touchend()"
     @click="clickList"
   >
-    <div v-if="disabled" class="maks" @click.stop="()=>{}"></div>
+    <div
+      v-if="disabled"
+      :class="`mask ${maskClass?maskClass:'maskBackgroundColor'}`"
+      @click.stop="()=>{}"
+    ></div>
     <div class="listHead">
       <component :class="iconClass?iconClass:''" v-if="icon && !slotIcon" :is="icon" />
       <slot name="icon" />
@@ -84,6 +88,9 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
+  },
+  maskClass: {
+    type: String
   }
 })
 const touchstart = () => {
@@ -108,18 +115,20 @@ onMounted(() => {
 .listItemBackgroundColor
   background-color: #ffffff
 .listItem
+  overflow: hidden
   position: relative
   display: flex
   align-content: stretch
   padding: 15px 10px 15px 15px
-  .maks
+  .mask
     position: absolute
     width: 100%
-    background-color: #999999
     padding-bottom: 100%
-    opacity: 0.5
+    opacity: 0.8
     z-index: 1
-    margin: -15px 0 0 -15px
+    margin: -35px 0 0 -15px
+  .maskBackgroundColor
+    background-color: #ffffff
   .listHead
     padding: 2px 10px 0 0
     .icon

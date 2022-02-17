@@ -5,8 +5,13 @@
       @touchstart="touchstart()"
       @touchend="touchend()"
       @click="clickblock"
-      :class="`blockBody ${itemClass?itemClass:'blockItemBackgroundColor'}`"
+      :class="`blockBody blockBodyActive ${itemClass?itemClass:'blockItemBackgroundColor'}`"
     >
+      <div
+        v-if="disabled"
+        :class="`mask ${maskClass?maskClass:'maskBackgroundColor'}`"
+        @click.stop="()=>{}"
+      ></div>
       <div style="flex:1">
         <div class="blockIcon" v-if="icon || slotIcon">
           <component :class="iconClass?iconClass:''" v-if="icon && !slotIcon" :is="icon" />
@@ -29,7 +34,7 @@
   </div>
 </template>
 <script lang='ts' setup>
-import { ref, useSlots } from 'vue'
+import { ref, useSlots, onMounted } from 'vue'
 const props = defineProps({
   title: {
     type: String,
@@ -67,6 +72,13 @@ const props = defineProps({
   },
   footClass: {
     type: String
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  maskClass: {
+    type: String
   }
 })
 const slotIcon = !!useSlots().icon
@@ -75,23 +87,40 @@ const slotDesc = !!useSlots().desc
 const slotFoot = !!useSlots().foot
 const blockBody = ref(null)
 const touchstart = () => {
-  blockBody.value.classList.add('itemTouch')
+  if (!props.disabled) {
+    blockBody.value.classList.add('itemTouch')
+  }
 }
 const touchend = () => {
   blockBody.value.classList.remove('itemTouch')
 }
 const clickblock = () => {
-  props.fun && !props.disabled && props.fun()
+  props.fun && !props.disabled && !props.disabled && props.fun()
 }
+onMounted(() => {
+  !props.fun && blockBody.value.classList.remove('blockBodyActive')
+  props.disabled && blockBody.value.classList.remove('blockBodyActive')
+})
 </script>
 <style lang='sass' scoped>
 .blockItem
   width: 50%
   display: flex
   align-items: stretch
+  .mask
+    position: absolute
+    width: 100%
+    padding-bottom: 100%
+    opacity: 0.8
+    z-index: 1
+    margin: -35px 0 0 -15px
+  .maskBackgroundColor
+    background-color: #ffffff
   .blockItemBackgroundColor
     background-color: #ffffff
   .blockBody
+    overflow: hidden
+    position: relative
     width: 100%
     border-radius: 10px
     margin-bottom: 10px
@@ -115,6 +144,6 @@ const clickblock = () => {
       color: #999999
 .itemTouch
   background-color: rgba(220, 220, 220, 0.4)!important
-.blockBody:active
+.blockBodyActive:active
   background-color: rgba(220, 220, 220, 0.4)!important
 </style>

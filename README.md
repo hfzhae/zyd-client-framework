@@ -13,7 +13,7 @@ $ npm install -s zyd-client-framework
 ## Import
 >/index.js
 ```js
-import { List, ListGroup, LeftSlider } from 'zyd-client-framework'
+import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-framework'
 ```
 
 ## List
@@ -32,6 +32,7 @@ import { List, ListGroup, LeftSlider } from 'zyd-client-framework'
   descClass="descClass"
   footClass="footClass"
   itemClass="itemClass"
+  maskClass="maskClass"
 ></List>
 ```
 
@@ -49,7 +50,12 @@ import { List, ListGroup, LeftSlider } from 'zyd-client-framework'
 
 ## ListGroup
 ```html
-<ListGroup :disabled="true" itemClass="itemClass" title="title">
+<ListGroup 
+  :disabled="true" 
+  maskClass="maskClass" 
+  itemClass="itemClass" 
+  title="title"
+>
   <List />
 </ListGroup>
 ```
@@ -63,11 +69,13 @@ import { List, ListGroup, LeftSlider } from 'zyd-client-framework'
   :icon="IceCreamRound"
   :showBorder="true"
   :fun="()=>{}"
+  :disabled="true"
   iconClass="iconClass"
   titleClass="titleClass"
   descClass="descClass"
   footClass="footClass"
   itemClass="itemClass"
+  maskClass="maskClass" 
 />
 ```
 
