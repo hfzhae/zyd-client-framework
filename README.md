@@ -2,7 +2,7 @@
 <p>
   <a href="https://github.com/hfzhae/zyd-client-framework/blob/master/LICENSE"><img style="margin-right:5px;" src="https://img.shields.io/badge/license-MIT-grren.svg"></a>
   <img style="margin-right:5px;" src="https://img.shields.io/badge/vue-3.x-blue.svg">
-  <img style="margin-right:5px;" src="https://img.shields.io/badge/element-plus-orange.svg">
+  <img style="margin-right:5px;" src="https://img.shields.io/badge/elementUI-plus-orange.svg">
 </p>
 
 ## Installation
@@ -16,6 +16,24 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
 ```
 
 ## List
+#### property
+name|explain|type|default|examples
+-|-|-|-|-
+title|标题|String||title="标题"
+desc|副标题|String||desc="副标题"
+foot|右侧副标题|String||foot="145"
+isLink|是否显示右侧剪头|Boolean|false|:isLink="false"
+fun|点击事件调用的方法|Function||:fun="getItem"
+icon|图标对象，同elementUI Plus的icon使用方法|Object||:icon="plus"
+showBorder|是否显示行间边框|Boolean|true|:showBorder="false"
+disabled|是否禁用|Boolean|false|:disabled="true"
+iconClass|图标css类名|String||iconClass="iconClass"
+titleClass|标题css类名|String||titleClass="titleClass"
+descClass|副标题css类名|String||descClass="descClass"
+footClass|右侧副标题css类名|String||footClass="footClass"
+itemClass|List元素css类名|String||itemClass="itemClass"
+maskClass|禁用遮罩层css类名|String||maskClass="maskClass"
+#### examples
 ```html
 <List
   title="title"
@@ -34,8 +52,14 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
   maskClass="maskClass"
 ></List>
 ```
-
 #### Slot
+name|explain
+-|-
+icon|图标插槽
+title|标题插槽
+desc|副标题插槽
+foot|右侧副标题插槽
+#### examples
 ```html
 <List>
   <template #icon>
@@ -48,6 +72,14 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
 ```
 
 ## ListGroup
+#### property
+name|explain|type|default|examples
+-|-|-|-|-
+title|标题|String||title="标题"
+disabled|是否禁用|Boolean|false|:disabled="true"
+titleClass|标题css类名|String||titleClass="titleClass"
+maskClass|禁用遮罩层css类名|String||maskClass="maskClass"
+#### examples
 ```html
 <ListGroup 
   :disabled="true" 
@@ -60,6 +92,23 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
 ```
 
 ## Block
+#### property
+name|explain|type|default|examples
+-|-|-|-|-
+title|标题|String||title="标题"
+desc|副标题|String||desc="副标题"
+foot|右侧副标题|String||foot="145"
+fun|点击事件调用的方法|Function||:fun="getItem"
+icon|图标对象，同elementUI Plus的icon使用方法|Object||:icon="plus"
+showBorder|是否显示行间边框|Boolean|true|:showBorder="false"
+disabled|是否禁用|Boolean|false|:disabled="true"
+iconClass|图标css类名|String||iconClass="iconClass"
+titleClass|标题css类名|String||titleClass="titleClass"
+descClass|副标题css类名|String||descClass="descClass"
+footClass|右侧副标题css类名|String||footClass="footClass"
+itemClass|List元素css类名|String||itemClass="itemClass"
+maskClass|禁用遮罩层css类名|String||maskClass="maskClass"
+#### examples
 ```html
 <Block
   title="title"
@@ -77,8 +126,14 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
   maskClass="maskClass" 
 />
 ```
-
 #### slot
+name|explain
+-|-
+icon|图标插槽
+title|标题插槽
+desc|副标题插槽
+foot|右侧副标题插槽
+#### examples
 ```html
 <Block>
   <template #icon>
@@ -91,13 +146,26 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
 ```
 
 ## BlockGroup
+#### property
+name|explain|type|default|examples
+-|-|-|-|-
+title|标题|String||title="标题"
+disabled|是否禁用|Boolean|false|:disabled="true"
+#### examples
 ```html
-<BlockGroup groupClass="groupClass" title="title">
+<BlockGroup groupClass="groupClass" :disabled="true" title="title">
   <Block />
 </BlockGroup>
 ```
-
 ## LeftSlider
+#### property
+name|explain|type|default|examples
+-|-|-|-|-
+itemClass|List元素css类名|String||itemClass="itemClass"
+menuClass|右侧按钮菜单css类名|String||menuClass="menuClass"
+showBorder|是否显示行间边框|Boolean|true|:showBorder="false"
+transition|滑块动画时常|Number|0.3|:transition="0.1"
+
 ```html
 <ListGroup>
   <LeftSlider 
@@ -118,6 +186,10 @@ import { List, ListGroup, LeftSlider, Block, BlockGroup } from 'zyd-client-frame
 </ListGroup>
 ```
 #### slot
+name|explain
+-|-
+rightMenu|右侧按钮菜单插槽
+#### examples
 ```html
 <template #rightMenu>
   <div style="margin: 0 20px">del</div>

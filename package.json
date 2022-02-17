@@ -1,6 +1,6 @@
 {
   "name": "zyd-client-framework",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "基于vite + vue3 + element的client端的组件框架",
   "main": "./src/main.ts",
   "dependencies": {
