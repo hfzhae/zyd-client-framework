@@ -98,7 +98,7 @@ const touchend = ev => {
   user-select: none
   .content
     z-index: 100
-    transition: 0.1s
+    transition: 0.3s
     width: 100%
   .rightMenuBackgroundColor
     background: #df5327
