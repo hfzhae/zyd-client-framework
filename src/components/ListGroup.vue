@@ -1,8 +1,10 @@
 <template>
-  <div class="listGroupTitle" v-if="title" :style="groupStyle?groupStyle:''">{{title}}</div>
-  <div :class="`listGroupItem ${itemClass?itemClass:'listGroupItemBackgroundColor'}`">
-    <div v-if="disabled" :class="`mask ${maskClass?maskClass:'maskBackgroundColor'}`"></div>
-    <slot />
+  <div class="listGroup" :style="groupStyle?groupStyle:''">
+    <div class="listGroupTitle" v-if="title">{{title}}</div>
+    <div :class="`listGroupItem ${itemClass?itemClass:'listGroupItemBackgroundColor'}`">
+      <div v-if="disabled" :class="`mask ${maskClass?maskClass:'maskBackgroundColor'}`"></div>
+      <slot />
+    </div>
   </div>
 </template>
 <script lang='ts' setup>
@@ -29,10 +31,11 @@ const props = defineProps({
 <style lang='sass' scoped>
 .listGroupItemBackgroundColor
   background-color: #ffffff
+.listGroup
+  margin: 20px
 .listGroupItem
   position: relative
   overflow: hidden
-  margin: 20px
   padding: 0 0 0 0
   border-radius: 10px
   :deep(.listBorder:last-child)
@@ -47,7 +50,6 @@ const props = defineProps({
   .maskBackgroundColor
     background-color: #ffffff
 .listGroupTitle
-  margin: 20px 0 -15px 25px
-  font-size: 18px
-  color: #000000
+  margin: 0 0 5px 10px
+  font-size: 16px
 </style>

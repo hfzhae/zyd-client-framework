@@ -153,7 +153,7 @@ title|标题|String||title="标题"
 disabled|是否禁用|Boolean|false|:disabled="true"
 #### examples
 ```html
-<BlockGroup groupClass="groupClass" :disabled="true" title="title">
+<BlockGroup groupStyle="margin:0px;" groupClass="groupClass" :disabled="true" title="title">
   <Block />
 </BlockGroup>
 ```
