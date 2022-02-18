@@ -1,9 +1,6 @@
 <template>
-  <div class="listGroupTitle" v-if="title">{{title}}</div>
-  <div
-    :class="`listGroupItem ${itemClass?itemClass:'listGroupItemBackgroundColor'}`"
-    :style="groupStyle?groupStyle:''"
-  >
+  <div class="listGroupTitle" v-if="title" :style="groupStyle?groupStyle:''">{{title}}</div>
+  <div :class="`listGroupItem ${itemClass?itemClass:'listGroupItemBackgroundColor'}`">
     <div v-if="disabled" :class="`mask ${maskClass?maskClass:'maskBackgroundColor'}`"></div>
     <slot />
   </div>
